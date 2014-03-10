@@ -5,11 +5,12 @@ using System.Collections;
 public class MicrophoneInput : MonoBehaviour {
 	public float sensitivity = 100;
 	public float loudness = 0;
+	public bool audioMute = true;
 	
 	void Start() {
 		audio.clip = Microphone.Start(null, false, 999, 44100);
 		audio.loop = false; // Set the AudioClip to loop
-		audio.mute = false; // Mute the sound, we don't want the player to hear it
+		audio.mute = audioMute; // Mute the sound, we don't want the player to hear it
 		//while (!(Microphone.GetPosition(AudioInputDevice) > 0)){} // Wait until the recording has started
 		audio.Play(); // Play the audio source!
 	}
